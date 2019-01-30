@@ -11,7 +11,6 @@ class App extends Component {
   async componentWillMount() {
     let response = await axios.get('http://localhost:5000/api/launch/upcoming');
     if (response.data) {
-      console.log(response.data);
       this.setState({
         items: response.data,
         offset: this.state.offset + 6 || 6
