@@ -1,0 +1,20 @@
+$background: rgb(33, 43, 59);
+$color-primary: #6d5d4b;
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+html {
+  box-sizing: border-box;
+  font-size: 100%; // 62.5% => 1rem = 10px
+}
+
+body {
+  color: $color-primary;
+  font-weight: 300;
+  line-height: 1.6;
+  background-color: $background;
+  font-family: $font-primary;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
