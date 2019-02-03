@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Header, Icon, Image, Modal, Item } from 'semantic-ui-react'
 import { format } from 'date-fns'
 
-class LauchCard extends Component {
+class LaunchCard extends Component {
   imageRef = React.createRef()
   state = {
     spans: 0,
@@ -47,31 +47,28 @@ class LauchCard extends Component {
   renderLinks = item => {
     return (
       <Item.Content style={{ margin: '10px 0' }}>
-        <Item.Header color="red">
-          Links:
-        </Item.Header>
-      <Item.Meta>
-
-        {item.rocketWikiURL && (
-          <div>
-            <a href={item.rocketWikiURL}>Rocket Wiki</a>
-          </div>
-        )}
-        {item.agencieWikiURL && (
-          <div>
-            <a key={item.id} href={item.agencieWikiURL}>
-              Agency Wiki
-            </a>
-          </div>
-        )}
-        {item.missionWikiURL && (
-          <div>
-            <a key={item.id} href={item.missionWikiURL}>
-              Agency Wiki
-            </a>
-          </div>
-        )}
-      </Item.Meta>
+        <Item.Header color="red">Links:</Item.Header>
+        <Item.Meta>
+          {item.rocketWikiURL && (
+            <div>
+              <a href={item.rocketWikiURL}>Rocket Wiki</a>
+            </div>
+          )}
+          {item.agencieWikiURL && (
+            <div>
+              <a key={item.id} href={item.agencieWikiURL}>
+                Agency Wiki
+              </a>
+            </div>
+          )}
+          {item.missionWikiURL && (
+            <div>
+              <a key={item.id} href={item.missionWikiURL}>
+                Agency Wiki
+              </a>
+            </div>
+          )}
+        </Item.Meta>
       </Item.Content>
     )
   }
@@ -92,14 +89,12 @@ class LauchCard extends Component {
         basic
         size="small"
       >
-        <Header icon="rocket"  color='red' content={item.rocketName} />
+        <Header icon="rocket" color="red" content={item.rocketName} />
         <Modal.Content image>
           <Image wrapped size="medium" src={item.imageURL} />
           <Modal.Description>
             <Item.Content>
-              <Item.Header as="h5">
-                {item.rocketName}
-              </Item.Header>
+              <Item.Header as="h5">{item.rocketName}</Item.Header>
               {item.agencieName && (
                 <Item.Meta> Launch by: {item.agencieName}</Item.Meta>
               )}
@@ -119,4 +114,4 @@ class LauchCard extends Component {
   }
 }
 
-export default LauchCard
+export default LaunchCard

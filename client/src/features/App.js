@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Loading from './Loading'
-import LauchCard from './LauchCard'
+import LaunchCard from './LaunchCard'
 
 const DEPLOYED_URL = 'https://[NAME_PROJECT].herokuapp.com/api/launch'
 const ASSETS = `${process.env.PUBLIC_URL}/assets`
@@ -43,7 +43,7 @@ class App extends Component {
       if (isImagePlaceHolder) {
         return
       }
-      return <LauchCard key={item.id} item={item} />
+      return <LaunchCard key={item.id} item={item} />
     })
     return <div className="image-list">{images}</div>
   }
