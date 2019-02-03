@@ -1,5 +1,6 @@
 .image-list {
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(4, minmax(200px, 300px));
   @media (max-width: 695px) {
     grid-template-columns: repeat(2, minmax(150px, 350px));
