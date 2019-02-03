@@ -33,7 +33,6 @@ if (['production'].includes(process.env.NODE_ENV)) {
 
   const path = require('path');
   app.get('*', (req, res) => {
-    console.log('manda url');
     res.sendFile(path.resolve('client', 'build', 'index.html'));
   });
 }
