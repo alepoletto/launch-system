@@ -106,7 +106,7 @@ class LaunchCard extends Component {
         </Modal.Content>
         <Modal.Actions>
           <Button color="green" onClick={this.handleClose} inverted>
-            <Icon name="checkmark" /> Back
+            <Icon name="close" /> Close
           </Button>
         </Modal.Actions>
       </Modal>
