@@ -72,7 +72,10 @@ class App extends Component {
             <div style={{ marginTop: '0px' }}>{this.renderLaunches()}</div>
           </div>
           <div className="ui tree column grid">
-            <div className="column right aligned">
+            <div
+              className="column right aligned"
+              style={{ margin: '30px 10px' }}
+            >
               <button
                 className="inverted ui button"
                 onClick={() => this.loadMore()}
