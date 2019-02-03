@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-// import LaunchCard from './LaunchCard'
-import Loading from './features/Loading'
-import LauchCard from './features/LauchCard'
+import Loading from './Loading'
+import LauchCard from './LauchCard'
 
 const DEPLOYED_URL = 'https://[NAME_PROJECT].herokuapp.com/api/launch'
 const ASSETS = `${process.env.PUBLIC_URL}/assets`
@@ -38,7 +37,7 @@ class App extends Component {
     }
   }
 
-  renderLaunchs() {
+  renderLaunches() {
     const images = this.state.items.map(item => {
       const isImagePlaceHolder = item.imageURL.includes('placeholder')
       if (isImagePlaceHolder) {
@@ -47,10 +46,6 @@ class App extends Component {
       return <LauchCard key={item.id} item={item} />
     })
     return <div className="image-list">{images}</div>
-
-    // return this.state.items.map(item => {
-    //   return <LaunchCard item={item} key={item.id} />
-    // })
   }
 
   render() {
@@ -59,31 +54,32 @@ class App extends Component {
     }
 
     return (
-      <div className='homepage'>
-        <div className='pre-container'>
-
-
-          <div className="hero">
-            <img className='custom-image' src={`${ASSETS}/images/moon.jpg`} alt="moon" />
+      <div>
+        <div className="homepage">
+          <div className="pre-container">
+            <div className="hero">
+              <img
+                className="custom-image"
+                src={`${ASSETS}/images/moon.jpg`}
+                alt="moon"
+              />
+            </div>
+            <div className="overlay">
+              <div className="overlay-title">Your eyes on the space.</div>
+            </div>
           </div>
-        <div className="overlay">
-          <div className='overlay-title'>
-            Your eyes on the space.
+          <div className="">
+            <div style={{ marginTop: '0px' }}>{this.renderLaunches()}</div>
           </div>
-
-        </div>
-        </div>
-        <div className="">
-          <div style={{ marginTop: '0px' }}>{this.renderLaunchs()}</div>
-        </div>
-        <div className="ui tree column grid">
-          <div className="column centered row">
-            <button
-              className="positive ui button"
-              onClick={() => this.loadMore()}
-            >
-              More...
-            </button>
+          <div className="ui tree column grid">
+            <div className="column right aligned">
+              <button
+                className="inverted ui button"
+                onClick={() => this.loadMore()}
+              >
+                Load More...
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,13 @@
 .image-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(200px, 300px));
+  @media (max-width: 695px) {
+    grid-template-columns: repeat(2, minmax(150px, 350px));
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: repeat(1, minmax(150px, 400px));
+  }
 
   img {
     grid-row-end: span 2;
@@ -11,7 +18,8 @@
 
 .image-container {
   &:hover {
-    opacity: 0.95;
+    opacity: 0.5;
+    box-shadow: 0 0 2px 1px rgb(26, 36, 59);
   }
   position: relative;
 }

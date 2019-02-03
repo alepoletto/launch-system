@@ -19,9 +19,9 @@ $font-display: 'Josefin Sans', sans-serif;
 }
 .header-top {
   padding: 25px 0;
-  opacity: 0.8;
-  background-color: #131e3b !important;
-
+  opacity: 0.6;
+  background-color: #1a243b !important;
+  position: fixed;
 }
 .header-title {
   padding: 10px;
@@ -36,9 +36,8 @@ $font-display: 'Josefin Sans', sans-serif;
 .hero {
   overflow: hidden;
   img {
-  width: 100vw;
-  height: 300px;
-    filter: grayscale(30%);
+    width: 100vw;
+    height: 35vh;
   }
 }
 
@@ -51,7 +50,7 @@ $font-display: 'Josefin Sans', sans-serif;
   //height: 100%;
   //width: 100%;
   opacity: 0.6;
-  transition: .5s ease;
+  transition: 0.5s ease;
   background-color: #131e3b;
 }
 
