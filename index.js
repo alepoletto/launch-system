@@ -1,14 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+//const cors = require('cors');
 const chalk = require('chalk')
 const log = console.log
 
 const app = express();
 
 // basic security configuration
-const helmet = require('helmet')
-app.use(helmet())
+//const helmet = require('helmet')
+//app.use(helmet())
 
 
 // for Heroku deployment
@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
 
 
 app.use(bodyParser.json());
-app.use(cors());
+//app.use(cors());
 
 //services
 require('./service/storageService');
