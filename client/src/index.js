@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './features/App'
 import { AppContainer } from 'react-hot-loader'
 import Homepage from './components/Homepage'
+import * as serviceWorker from './serviceWorker'
 import 'semantic-ui-css/semantic.min.css'
 import './index.scss'
 
@@ -16,6 +17,8 @@ const render = Component => {
 }
 
 // Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister()
+
 
 render(App)
 
