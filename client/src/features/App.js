@@ -3,7 +3,7 @@ import axios from 'axios'
 import Loading from './Loading'
 import LaunchCard from './LaunchCard'
 
-const DEPLOYED_URL = 'https://[NAME_PROJECT].herokuapp.com/api/launch'
+const DEPLOYED_URL = 'https://launch-system.herokuapp.com/api/launch'
 const ASSETS = `${process.env.PUBLIC_URL}/assets`
 
 let url = DEPLOYED_URL
