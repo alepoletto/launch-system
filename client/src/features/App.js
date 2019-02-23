@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import Loading from './Loading'
 import LaunchCard from './LaunchCard'
+import InlineLoader from './InlineLoader'
 
-const DEPLOYED_URL = 'https://[NAME_PROJECT].herokuapp.com/api/launch'
+const DEPLOYED_URL = 'https://launch-system.herokuapp.com/api/launch'
 const ASSETS = `${process.env.PUBLIC_URL}/assets`
 
 let url = DEPLOYED_URL
@@ -13,10 +15,12 @@ if (process.env.NODE_ENV === 'development') {
 
 class App extends Component {
   state = {
-    items: []
+    items: [],
+    count: 30,
+    start: 1
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     let response = await axios.get(`${url}/upcoming`)
     if (response.data) {
       this.setState({
@@ -25,25 +29,29 @@ class App extends Component {
       })
     }
   }
+
   async loadMore() {
+    const { count } = this.state
+    this.setState(prevState => ({
+      start: prevState.start + count
+    }))
     let response = await axios.get(
       `${url}/upcoming?offset=${this.state.offset}`
     )
     if (response.data) {
       this.setState({
-        items: [...this.state.items, ...response.data],
-        offset: this.state.offset + 6
+        items: this.state.items.concat(response.data)
       })
     }
   }
 
   renderLaunches() {
-    const images = this.state.items.map(item => {
+    const images = this.state.items.map((item, key) => {
       const isImagePlaceHolder = item.imageURL.includes('placeholder')
       if (isImagePlaceHolder) {
-        return
+        return true
       }
-      return <LaunchCard key={item.id} item={item} />
+      return <LaunchCard key={key} item={item} />
     })
     return <div className="image-list">{images}</div>
   }
@@ -69,19 +77,15 @@ class App extends Component {
             </div>
           </div>
           <div className="">
-            <div style={{ marginTop: '0px' }}>{this.renderLaunches()}</div>
-          </div>
-          <div className="ui tree column grid">
-            <div
-              className="column right aligned"
-              style={{ margin: '30px 10px' }}
-            >
-              <button
-                className="inverted ui button"
-                onClick={() => this.loadMore()}
+            <div style={{ marginTop: '0px' }}>
+              <InfiniteScroll
+                dataLength={this.state.items.length}
+                next={this.loadMore.bind(this)}
+                hasMore={true}
+                loader={<InlineLoader />}
               >
-                Load More...
-              </button>
+                {this.renderLaunches()}
+              </InfiniteScroll>
             </div>
           </div>
         </div>
