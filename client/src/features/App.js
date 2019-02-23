@@ -17,7 +17,8 @@ class App extends Component {
   state = {
     items: [],
     count: 30,
-    start: 1
+    start: 1,
+    offset: 0
   }
 
   async componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
     if (response.data) {
       this.setState({
         items: response.data,
-        offset: this.state.offset + 6 || 6
+        offset: this.state.offset + 6
       })
     }
   }
@@ -33,7 +34,8 @@ class App extends Component {
   async loadMore() {
     const { count } = this.state
     this.setState(prevState => ({
-      start: prevState.start + count
+      start: prevState.start + count,
+      offset: prevState.offset + 6
     }))
     let response = await axios.get(
       `${url}/upcoming?offset=${this.state.offset}`
@@ -46,12 +48,13 @@ class App extends Component {
   }
 
   renderLaunches() {
-    const images = this.state.items.map((item, key) => {
-      const isImagePlaceHolder = item.imageURL.includes('placeholder')
-      if (isImagePlaceHolder) {
+    const images = this.state.items.map(item => {
+      const isImagePlaceHolder =
+        item.imageURL.includes('placeholder') || item.imageURL.includes('Array')
+      if (isImagePlaceHolder || !item.imageURL) {
         return true
       }
-      return <LaunchCard key={key} item={item} />
+      return <LaunchCard key={item.id} item={item} />
     })
     return <div className="image-list">{images}</div>
   }
